@@ -1,7 +1,7 @@
 using System;
 using CommandLine;
 
-namespace sonarqube_casc
+namespace SonarConfiguration
 {
     class CmdOptions
     {
