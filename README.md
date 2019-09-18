@@ -128,3 +128,15 @@ projects:
           secret: secret
 ```
 
+
+
+## Build Instruction
+Enter a mvn container
+```
+docker run -it --rm --user 1000:1000 --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.6.1-jdk-11-slim bash
+```
+
+Execute
+```
+mvn test-compile
+```
