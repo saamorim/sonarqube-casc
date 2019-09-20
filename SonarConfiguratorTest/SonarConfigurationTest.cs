@@ -34,7 +34,8 @@ admin:
             ConfigurationReader reader = new ConfigurationReader();
             CascConfiguration conf;
             YamlException ex = Assert.Throws<YamlException>(() => conf = reader.LoadFromString(yamlContent));
-            Assert.Equal("(Line: 4, Col: 19, Idx: 41) - (Line: 4, Col: 28, Idx: 50): Exception during deserialization", ex.Message);
+            Assert.True(ex.Message.Contains("Exception during deserialization"));
+            Assert.Equal(4, ex.Start.Line);
         }
     }
 }
