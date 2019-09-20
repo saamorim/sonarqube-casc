@@ -1,34 +1,21 @@
 using System;
 using System.IO;
-using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
 
 namespace SonarConfiguration
 {
     public class SonarConfigurator
     {
-        public SonarConfigurator()
-        {
-        }
+        private ConfigurationReader reader;
 
-        public CascConfiguration LoadConfig(string yamlContent)
+        public SonarConfigurator(ConfigurationReader reader)
         {
-            var deserializer = new DeserializerBuilder()
-                .WithNamingConvention(new CamelCaseNamingConvention())
-                .Build();
-
-            var config = deserializer.Deserialize<CascConfiguration>(yamlContent);
-            return config;
+            this.reader = reader;
         }
 
         internal void ApplyConfiguration(CmdOptions o)
         {
-            using (StreamReader str = new StreamReader(o.CasCLocation))
-            {
-                string yamlContent = str.ReadToEnd();
-                var config = LoadConfig(yamlContent);
-                Console.Write($"Log level is {config.Admin.System.Loglevel}");
-            }
+            var config = reader.LoadFromFile(o.CasCLocation);
+            Console.Write($"Log level is {config.Admin.System.Loglevel}");
         }
     }
 }
