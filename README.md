@@ -1,4 +1,6 @@
 # Sonarqube Configuration-as-code
+[![CircleCI](https://circleci.com/gh/saamorim/sonarqube-casc.svg?style=svg)](https://circleci.com/gh/saamorim/sonarqube-casc)
+
 ## Goal
 This projects aims to assist the configuration of sonar though code.
 
