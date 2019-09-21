@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SonarConfigurator\SonarConfigurator.csproj" />
+    <ProjectReference Include="..\SonarConfiguratorAsCode\SonarConfiguratorAsCode.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using SonarConfiguration;
+using SonarConfiguratorAsCode;
 using YamlDotNet.Core;
 
 namespace SonarConfigurationTest
@@ -34,7 +34,7 @@ admin:
             ConfigurationReader reader = new ConfigurationReader();
             CascConfiguration conf;
             YamlException ex = Assert.Throws<YamlException>(() => conf = reader.LoadFromString(yamlContent));
-            Assert.True(ex.Message.Contains("Exception during deserialization"));
+            Assert.Matches("Exception during deserialization", ex.Message);
             Assert.Equal(4, ex.Start.Line);
         }
     }
