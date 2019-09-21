@@ -1,7 +1,7 @@
 using System;
 using CommandLine;
 
-namespace SonarConfiguration
+namespace SonarConfiguratorAsCode
 {
     class CmdOptions
     {

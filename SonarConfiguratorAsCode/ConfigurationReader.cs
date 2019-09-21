@@ -2,7 +2,7 @@ using System.IO;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace SonarConfiguration {
+namespace SonarConfiguratorAsCode {
     public class ConfigurationReader {
 
         public CascConfiguration LoadFromFile(string filename) {

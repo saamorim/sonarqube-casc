@@ -1,4 +1,4 @@
-namespace SonarConfiguration
+namespace SonarConfiguratorAsCode
 {
     public class CascConfiguration
     {

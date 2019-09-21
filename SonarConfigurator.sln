@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonarConfigurator", "SonarConfigurator\SonarConfigurator.csproj", "{431FC18F-966B-4FAA-8276-D8B89F7AB9B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonarConfiguratorAsCode", "SonarConfiguratorAsCode\SonarConfiguratorAsCode.csproj", "{431FC18F-966B-4FAA-8276-D8B89F7AB9B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonarConfiguratorTest", "SonarConfiguratorTest\SonarConfiguratorTest.csproj", "{18B95DC3-0134-45CC-AF43-658C508990F4}"
 EndProject
