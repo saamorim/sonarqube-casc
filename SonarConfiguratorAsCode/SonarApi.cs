@@ -3,10 +3,10 @@ using RestSharp;
 
 namespace SonarConfiguratorAsCode
 {
-    public class ConfiguratorApplier {
+    public class SonarApi {
         private readonly RestClient client;
 
-        public ConfiguratorApplier(RestClient client) {
+        public SonarApi(RestClient client) {
             this.client = client;
         }
 

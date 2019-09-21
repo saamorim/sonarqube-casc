@@ -5,12 +5,12 @@ namespace SonarConfiguratorAsCode
     public class SonarConfigurator
     {
         private readonly ConfigurationReader reader;
-        private readonly ConfiguratorApplier applier;
+        private readonly SonarWriter writer;
 
-        public SonarConfigurator(ConfigurationReader reader, ConfiguratorApplier applier)
+        public SonarConfigurator(ConfigurationReader reader, SonarWriter writer)
         {
             this.reader = reader;
-            this.applier = applier;
+            this.writer = writer;
         }
 
         internal void ApplyConfiguration(string configLocation)
@@ -19,7 +19,7 @@ namespace SonarConfiguratorAsCode
 
             Console.Write($"Log level is {config.Admin.System.Loglevel}");
 
-            applier.SetLoglevel(config.Admin.System.Loglevel);
+            writer.SetLoglevel(config.Admin.System.Loglevel);
         }
 
     }

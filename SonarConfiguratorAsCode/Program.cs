@@ -20,14 +20,15 @@ namespace SonarConfiguratorAsCode
 
         private static SonarConfigurator CreateConfigurator(CmdOptions o)
         {
-            ConfigurationReader reader = new ConfigurationReader();
 
             var client = new RestClient(o.SonarqubeHost);
             client.Authenticator = GetAuthenticator(o);
 
-            ConfiguratorApplier applier = new ConfiguratorApplier(client);
+            SonarApi sonarApi = new SonarApi(client);
+            SonarWriter sonarWriter = new SonarWriter(sonarApi);
+            ConfigurationReader configReader = new ConfigurationReader();
 
-            SonarConfigurator configurator = new SonarConfigurator(reader, applier);
+            SonarConfigurator configurator = new SonarConfigurator(configReader, sonarWriter);
 
             return configurator;
         }
