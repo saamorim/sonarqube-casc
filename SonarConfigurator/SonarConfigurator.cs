@@ -19,15 +19,23 @@ namespace SonarConfiguration
             var config = reader.LoadFromFile(o.CasCLocation);
             Console.Write($"Log level is {config.Admin.System.Loglevel}");
 
-            var client = new RestClient("http://localhost:9000/");
-            client.Authenticator = new RestSharp.Authenticators.HttpBasicAuthenticator("8afaf679aae766b241bbfb10fc58e550b7c6a886", "");
-            
+            var client = new RestClient(o.SonarqubeHost);
+            client.Authenticator = GetAuthenticator(o);
+
             var request = new RestRequest("api/system/ping");
 
             var response = client.Post(request);
             var content = response.Content; // raw content as string
 
             Console.Write(content);
+        }
+
+        private static HttpBasicAuthenticator GetAuthenticator(CmdOptions o)
+        {
+            if (!String.IsNullOrEmpty(o.SonarqubeToken))
+                return new HttpBasicAuthenticator(o.SonarqubeToken, String.Empty);
+            
+            return new HttpBasicAuthenticator(o.SonarqubeUsername, o.SonarqubePassword);
         }
     }
 }
