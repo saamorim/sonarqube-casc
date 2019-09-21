@@ -1,0 +1,13 @@
+admin:
+    acl:
+        groups:
+            - name: group1
+              description: group description
+              permissions:
+                - admin
+                - profileadmin
+                - gateadmin
+                - scan
+                - provisioning
+            - name: group2
+              description: group description
