@@ -51,7 +51,57 @@ admin:
                 - provisioning
             ");
 
-            Assert.Equal(1, conf.Admin.Acl.Groups.Length);
+            Assert.Single(conf.Admin.Acl.Groups);
+            Assert.Equal(5, conf.Admin.Acl.Groups[0].Permissions.Length);
+
+        }
+
+
+        [Fact]
+        public void WhenParsingTwoGroupThenTwoGroupAreReturned()
+        {
+            var conf = ParseCascFromString(@"
+admin:
+    acl:
+        groups:
+            - name: group1
+              description: group description
+              permissions:
+                - admin
+                - profileadmin
+                - gateadmin
+                - scan
+                - provisioning
+            - name: group2
+              description: group2 description
+            ");
+
+            Assert.Equal(2, conf.Admin.Acl.Groups.Length);
+        }
+
+
+
+        [Fact]
+        public void WhenParsingAGroupContentIsOk()
+        {
+            var conf = ParseCascFromString(@"
+admin:
+    acl:
+        groups:
+            - name: group1
+              description: group description
+              permissions:
+                - admin
+                - profileadmin
+                - gateadmin
+                - scan
+                - provisioning
+            ");
+
+            var group = conf.Admin.Acl.Groups[0];
+            Assert.Equal("group1", group.Name);
+            Assert.Equal("group description", group.Description);
+            Assert.Equal(CascGroupPermission.admin, group.Permissions[0]);
         }
 
         private CascConfiguration ParseCascFromString(string yamlContent) {
